@@ -2161,7 +2161,7 @@ function check_non_tai_scoring(data, tiles){
                      board[orientation[players_in_order[i]]].chips += 60
                      board[orientation[players_in_order[(i + 1) % 4]]].chips -= 20
                      board[orientation[players_in_order[(i + 2) % 4]]].chips -= 20
-                     board[orientation[players_in_order[(i + 3) ]]].chips -= 20 
+                     board[orientation[players_in_order[(i + 3) % 4]]].chips -= 20 
                  }
  
                  // ming gang
@@ -2169,7 +2169,7 @@ function check_non_tai_scoring(data, tiles){
                      board[orientation[players_in_order[i]]].chips += 30
                      board[orientation[players_in_order[(i + 1) % 4]]].chips -= 10
                      board[orientation[players_in_order[(i + 2) % 4]]].chips -= 10
-                     board[orientation[players_in_order[(i + 3) ]]].chips -= 10
+                     board[orientation[players_in_order[(i + 3) % 4]]].chips -= 10
                  }
  
              }
@@ -2184,7 +2184,7 @@ function check_non_tai_scoring(data, tiles){
              board[orientation[players_in_order[i]]].chips += 30
              board[orientation[players_in_order[(i + 1) % 4]]].chips -= 10
              board[orientation[players_in_order[(i + 2) % 4]]].chips -= 10
-             board[orientation[players_in_order[(i + 3) ]]].chips -= 10
+             board[orientation[players_in_order[(i + 3) % 4]]].chips -= 10
          }
  
          // chicken/caterpillar
@@ -2192,7 +2192,7 @@ function check_non_tai_scoring(data, tiles){
              board[orientation[players_in_order[i]]].chips += 30
              board[orientation[players_in_order[(i + 1) % 4]]].chips -= 10
              board[orientation[players_in_order[(i + 2) % 4]]].chips -= 10
-             board[orientation[players_in_order[(i + 3) % 4 ]]].chips -= 10
+             board[orientation[players_in_order[(i + 3) % 4]]].chips -= 10
          }
  
          // an_yao (change 144 into another number at load(4))
@@ -2210,7 +2210,7 @@ function check_non_tai_scoring(data, tiles){
              board[orientation[players_in_order[i]]].chips += 30
              board[orientation[players_in_order[(i + 1) % 4]]].chips -= 10
              board[orientation[players_in_order[(i + 2) % 4]]].chips -= 10
-             board[orientation[players_in_order[(i + 3) ]]].chips -= 10
+             board[orientation[players_in_order[(i + 3) % 4]]].chips -= 10
          }
  
          // an yao(change 136 into another number at load(4))
