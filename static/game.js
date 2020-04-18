@@ -482,7 +482,9 @@ socket.on('new_round_to_client', function(new_tiles){
     id_chi = setTimeout(function() {
         chi = false
         if (player_turn == socket.id) {
+            if (board[orientation[socketid]].discard_tile != null){
             board['discard_pile'].push(board[orientation[socketid]].discard_tile[0])
+            }
             socket.emit('update_discard_pile', board['discard_pile'], client_room_num)
             console.log('requesting change to next player')
             console.log(right_id)
