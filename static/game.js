@@ -301,6 +301,7 @@ socket.on('option_to_win', function(data, tai_won, tiles, socketid, all){
 })
 
 socket.on('end_game_to_client', function(data, tiles){
+    gtag('event', 'round_completed')
     check_non_tai_scoring(data, tiles)
     
     round_end_display(board)
@@ -315,6 +316,7 @@ socket.on('end_game_to_client', function(data, tiles){
             
             if (prevailing_wind == 3){
                 // Gameend()
+                gtag('event', 'game_completed')
                 return
             }
             
