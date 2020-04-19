@@ -240,7 +240,7 @@ socket.on('set_player_turn', function(data){
             document.querySelector("#info").innerHTML = "It is the "+ orientation[player_turn] + "  player's turn."
         }
     }
- , 100);
+ , 200);
 })
 
 socket.on('draw_tile', function(){
@@ -251,7 +251,7 @@ socket.on('draw_tile', function(){
         }
         
         update_board(board)
-    }, 200);
+    }, 300);
 })
 
 socket.on('discard', function(){
@@ -259,7 +259,7 @@ socket.on('discard', function(){
         if (player_turn == socket.id) {
             discard = true
         }
-    }, 300)
+    }, 400)
     
  })
 
@@ -274,7 +274,7 @@ socket.on('option_to_win', function(data, tai_won, tiles, socketid, all){
     
     setTimeout(function(){
         update_board(board)
-    }, 300)
+    }, 400)
 
 
     if (socket.id == data){
@@ -292,7 +292,7 @@ socket.on('option_to_win', function(data, tai_won, tiles, socketid, all){
                 socket.emit('continue_round_from_other', tiles, socketid, all, client_room_num)
             }
         }
-        }, time_to_hu + 300)
+        }, time_to_hu + 400)
     }
 
     
@@ -339,7 +339,7 @@ socket.on('end_game_to_client', function(data, tiles){
         console.log('yes')
         socket.emit('new_round_to_server', players_in_order, banker, client_room_num)
     }
-    }, 7000)
+    }, 8000)
 
 })
 
