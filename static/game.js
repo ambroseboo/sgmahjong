@@ -407,6 +407,7 @@ socket.on('round_won_to_client', function(data, tiles){
             
             if (prevailing_wind == 3){
                 // Gameend()
+                gtag('event', 'game_completed')
                 return
             }
             
