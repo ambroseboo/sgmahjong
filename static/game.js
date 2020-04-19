@@ -700,7 +700,7 @@ red_circle.src = "https://i.imgur.com/AJILDJK.png"
 
 //all tile pics
 var one_tong = document.createElement("img")
-one_tong.src = "https://i.imgur.com/F2Iabom.jpg"
+one_tong.src = "/mahjong_pics_v1/1_tong.jpg"
 var two_tong = document.createElement("img")
 two_tong.src = "https://i.imgur.com/yy8rOso.jpg"
 var three_tong = document.createElement("img")
