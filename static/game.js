@@ -241,7 +241,7 @@ socket.on('set_player_turn', function(data){
             document.querySelector("#info").innerHTML = "It is the "+ orientation[player_turn] + "  player's turn."
         }
     }
- , 200);
+ , 100);
 })
 
 socket.on('draw_tile', function(){
@@ -252,7 +252,7 @@ socket.on('draw_tile', function(){
         }
         
         update_board(board)
-    }, 300);
+    }, 200);
 })
 
 socket.on('discard', function(){
@@ -260,7 +260,7 @@ socket.on('discard', function(){
         if (player_turn == socket.id) {
             discard = true
         }
-    }, 400)
+    }, 300)
     
  })
 
@@ -275,7 +275,7 @@ socket.on('option_to_win', function(data, tai_won, tiles, socketid, all){
     
     setTimeout(function(){
         update_board(board)
-    }, 400)
+    }, 300)
 
 
     if (socket.id == data){
@@ -293,7 +293,7 @@ socket.on('option_to_win', function(data, tai_won, tiles, socketid, all){
                 socket.emit('continue_round_from_other', tiles, socketid, all, client_room_num)
             }
         }
-        }, time_to_hu + 400)
+        }, time_to_hu + 300)
     }
 
     
@@ -302,7 +302,6 @@ socket.on('option_to_win', function(data, tai_won, tiles, socketid, all){
 })
 
 socket.on('end_game_to_client', function(data, tiles){
-    gtag('event', 'round_draw_completed')
     check_non_tai_scoring(data, tiles)
     
     round_end_display(board)
@@ -317,7 +316,6 @@ socket.on('end_game_to_client', function(data, tiles){
             
             if (prevailing_wind == 3){
                 // Gameend()
-                gtag('event', 'game_completed')
                 return
             }
             
@@ -340,12 +338,12 @@ socket.on('end_game_to_client', function(data, tiles){
         console.log('yes')
         socket.emit('new_round_to_server', players_in_order, banker, client_room_num)
     }
-    }, 8000)
+    }, 7000)
 
 })
 
 socket.on('round_won_to_client', function(data, tiles){
-    gtag('event', 'round_completed')
+        
 
     check_non_tai_scoring(data, tiles)
 
@@ -408,7 +406,6 @@ socket.on('round_won_to_client', function(data, tiles){
             
             if (prevailing_wind == 3){
                 // Gameend()
-                gtag('event', 'game_completed')
                 return
             }
             
@@ -607,118 +604,118 @@ ctx.imageSmoothingQuality = "high"
 // Create <img> element
 var tile_fd = document.createElement("img");
 // Set the src
-tile_fd.src = "https://i.imgur.com/fQYZ50A.jpg"
+tile_fd.src = "/static/mahjong_pics_v1/tile_fd.jpg"
 var tile_fd_shifted = document.createElement("img");
-tile_fd_shifted.src = "https://i.imgur.com/fAjzPCN.jpg"
+tile_fd_shifted.src = "/static/mahjong_pics_v1/tile_fd_shifted.jpg"
 var red_circle = document.createElement("img");
-red_circle.src = "https://i.imgur.com/AJILDJK.png"
+red_circle.src = "/static/mahjong_pics_v1/red_circle.png"
 
 //all tile pics
 var one_tong = document.createElement("img")
-one_tong.src = "https://i.imgur.com/F2Iabom.jpg"
+one_tong.src = "/static/mahjong_pics_v1/1_tong.jpg"
 var two_tong = document.createElement("img")
-two_tong.src = "https://i.imgur.com/yy8rOso.jpg"
+two_tong.src = "/static/mahjong_pics_v1/2_tong.jpg"
 var three_tong = document.createElement("img")
-three_tong.src = "https://i.imgur.com/nBWx2L5.jpg?1"
+three_tong.src = "/static/mahjong_pics_v1/3_tong.jpg"
 var four_tong = document.createElement("img")
-four_tong.src = "https://i.imgur.com/XxV71aU.jpg"
+four_tong.src = "/static/mahjong_pics_v1/4_tong.jpg"
 var five_tong = document.createElement("img")
-five_tong.src = "https://i.imgur.com/Wpq2Vfz.jpg"
+five_tong.src = "/static/mahjong_pics_v1/5_tong.jpg"
 var six_tong = document.createElement("img")
-six_tong.src = "https://i.imgur.com/flnw1k7.jpg"
+six_tong.src = "/static/mahjong_pics_v1/6_tong.jpg"
 var seven_tong = document.createElement("img")
-seven_tong.src = "https://i.imgur.com/VfoM6uE.jpg"
+seven_tong.src = "/static/mahjong_pics_v1/7_tong.jpg"
 var eight_tong = document.createElement("img")
-eight_tong.src = "https://i.imgur.com/ovcMOBv.jpg"
+eight_tong.src = "/static/mahjong_pics_v1/8_tong.jpg"
 var nine_tong = document.createElement("img")
-nine_tong.src = "https://i.imgur.com/pGRXQir.jpg"
+nine_tong.src = "/static/mahjong_pics_v1/9_tong.jpg"
 var one_bamboo = document.createElement("img")
-one_bamboo.src = "https://i.imgur.com/U0sbrp8.jpg"
+one_bamboo.src = "/static/mahjong_pics_v1/1_bamboo.jpg"
 var two_bamboo = document.createElement("img")
-two_bamboo.src = "https://i.imgur.com/yUtgxhv.jpg"
+two_bamboo.src = "/static/mahjong_pics_v1/2_bamboo.jpg"
 var three_bamboo = document.createElement("img")
-three_bamboo.src = "https://i.imgur.com/Unn1FWK.jpg"
+three_bamboo.src = "/static/mahjong_pics_v1/3_bamboo.jpg"
 var four_bamboo = document.createElement("img")
-four_bamboo.src = "https://i.imgur.com/HAeaaJf.jpg"
+four_bamboo.src = "/static/mahjong_pics_v1/4_bamboo.jpg"
 var five_bamboo = document.createElement("img")
-five_bamboo.src = "https://i.imgur.com/wr9ztQV.jpg"
+five_bamboo.src = "/static/mahjong_pics_v1/5_bamboo.jpg"
 var six_bamboo = document.createElement("img")
-six_bamboo.src = "https://i.imgur.com/3Z4s2LY.jpg"
+six_bamboo.src = "/static/mahjong_pics_v1/6_bamboo.jpg"
 var seven_bamboo = document.createElement("img")
-seven_bamboo.src = "https://i.imgur.com/VtdKkOg.jpg"
+seven_bamboo.src = "/static/mahjong_pics_v1/7_bamboo.jpg"
 var eight_bamboo = document.createElement("img")
-eight_bamboo.src = "https://i.imgur.com/RaHY0Vd.jpg"
+eight_bamboo.src = "/static/mahjong_pics_v1/8_bamboo.jpg"
 var nine_bamboo = document.createElement("img")
-nine_bamboo.src = "https://i.imgur.com/9Qa81TW.jpg"
+nine_bamboo.src = "/static/mahjong_pics_v1/9_bamboo.jpg"
 var one_wan = document.createElement("img")
-one_wan.src = "https://i.imgur.com/TectSSH.jpg"
+one_wan.src = "/static/mahjong_pics_v1/1_wan.jpg"
 var two_wan = document.createElement("img")
-two_wan.src = "https://i.imgur.com/0R4Hko8.jpg"
+two_wan.src = "/static/mahjong_pics_v1/2_wan.jpg"
 var three_wan = document.createElement("img")
-three_wan.src = "https://i.imgur.com/3QbDQwp.jpg"
+three_wan.src = "/static/mahjong_pics_v1/3_wan.jpg"
 var four_wan = document.createElement("img")
-four_wan.src = "https://i.imgur.com/fEPdyV3.jpg"
+four_wan.src = "/static/mahjong_pics_v1/4_wan.jpg"
 var five_wan = document.createElement("img")
-five_wan.src = "https://i.imgur.com/3llhfHn.jpg"
+five_wan.src = "/static/mahjong_pics_v1/5_wan.jpg"
 var six_wan = document.createElement("img")
-six_wan.src = "https://i.imgur.com/4xXLoIB.jpg"
+six_wan.src = "/static/mahjong_pics_v1/6_wan.jpg"
 var seven_wan = document.createElement("img")
-seven_wan.src = "https://i.imgur.com/zQNJWZu.jpg"
+seven_wan.src = "/static/mahjong_pics_v1/7_wan.jpg"
 var eight_wan = document.createElement("img")
-eight_wan.src = "https://i.imgur.com/hkMqown.jpg"
+eight_wan.src = "/static/mahjong_pics_v1/8_wan.jpg"
 var nine_wan = document.createElement("img")
-nine_wan.src = "https://i.imgur.com/Vt4ntp0.jpg"
+nine_wan.src = "/static/mahjong_pics_v1/9_wan.jpg"
 
 var blue_1_flower = document.createElement("img")
-blue_1_flower.src = "https://i.imgur.com/p9ZzR1i.jpg"
+blue_1_flower.src = "/static/mahjong_pics_v1/blue_1_flower.jpg"
 var blue_2_flower = document.createElement("img")
-blue_2_flower.src = "https://i.imgur.com/gojre8z.jpg"
+blue_2_flower.src = "/static/mahjong_pics_v1/blue_2_flower.jpg"
 var blue_3_flower = document.createElement("img")
-blue_3_flower.src = "https://i.imgur.com/xgiq5S4.jpg"
+blue_3_flower.src = "/static/mahjong_pics_v1/blue_3_flower.jpg"
 var blue_4_flower = document.createElement("img")
-blue_4_flower.src = "https://i.imgur.com/II1Zpu6.jpg"
+blue_4_flower.src = "/static/mahjong_pics_v1/blue_4_flower.jpg"
 var red_1_flower = document.createElement("img")
-red_1_flower.src = "https://i.imgur.com/e55HzyY.jpg"
+red_1_flower.src = "/static/mahjong_pics_v1/red_1_flower.jpg"
 var red_2_flower = document.createElement("img")
-red_2_flower.src = "https://i.imgur.com/GfwFNNh.jpg"
+red_2_flower.src = "/static/mahjong_pics_v1/red_2_flower.jpg"
 var red_3_flower = document.createElement("img")
-red_3_flower.src = "https://i.imgur.com/fMiydl0.jpg"
+red_3_flower.src = "/static/mahjong_pics_v1/red_3_flower.jpg"
 var red_4_flower = document.createElement("img")
-red_4_flower.src = "https://i.imgur.com/a9kTmiP.jpg"
+red_4_flower.src = "/static/mahjong_pics_v1/red_4_flower.jpg"
 var cat = document.createElement("img")
-cat.src = "https://i.imgur.com/llgZCnS.jpg"
+cat.src = "/static/mahjong_pics_v1/cat.jpg"
 var mouse = document.createElement("img")
-mouse.src = "https://i.imgur.com/3ZO6OyM.jpg"
+mouse.src = "/static/mahjong_pics_v1/mouse.jpg"
 var caterpillar = document.createElement("img")
-caterpillar.src = "https://i.imgur.com/Eyu71uZ.jpg"
+caterpillar.src = "/static/mahjong_pics_v1/caterpillar.jpg"
 var chicken = document.createElement("img")
-chicken.src = "https://i.imgur.com/wKGcLpJ.jpg"
+chicken.src = "/static/mahjong_pics_v1/chicken.jpg"
 
 var dong_pic = document.createElement("img")
-dong_pic.src = "https://i.imgur.com/zkW2o1M.jpg"
+dong_pic.src = "/static/mahjong_pics_v1/dong_feng.jpg"
 var nan_pic = document.createElement("img")
-nan_pic.src = "https://i.imgur.com/CkXhk0z.jpg"
+nan_pic.src = "/static/mahjong_pics_v1/nan_feng.jpg"
 var xi_pic = document.createElement("img")
-xi_pic.src = "https://i.imgur.com/jIFp2jx.jpg"
+xi_pic.src = "/static/mahjong_pics_v1/xi_feng.jpg"
 var bei_pic = document.createElement("img")
-bei_pic.src = "https://i.imgur.com/yY3At8n.jpg"
+bei_pic.src = "/static/mahjong_pics_v1/bei_feng.jpg"
 var green_dragon = document.createElement("img")
-green_dragon.src = "https://i.imgur.com/svSegpB.jpg"
+green_dragon.src = "/static/mahjong_pics_v1/green_dragon.jpg"
 var white_dragon = document.createElement("img")
-white_dragon.src = "https://i.imgur.com/Z3rj0Rh.jpg"
+white_dragon.src = "/static/mahjong_pics_v1/white_dragon.jpg"
 var red_dragon = document.createElement("img")
-red_dragon.src = "https://i.imgur.com/T9pXe4X.jpg"
+red_dragon.src = "/static/mahjong_pics_v1/red_dragon.jpg"
 
 var red_dice_v = document.createElement("img")
-red_dice_v.src = "https://i.imgur.com/F6sLXgI.jpg"
+red_dice_v.src = "/static/mahjong_pics_v1/red_dice_v.jpg"
 var red_dice_h = document.createElement("img")
-red_dice_h.src = "https://i.imgur.com/MwyWA0v.jpg"
+red_dice_h.src = "/static/mahjong_pics_v1/red_dice_h.jpg"
 var peng_notif = document.createElement("img")
-peng_notif.src = "https://i.imgur.com/JVLuJRW.png"
+peng_notif.src = "/static/mahjong_pics_v1/peng_notif.png"
 var chi_notif = document.createElement("img")
-chi_notif.src = "https://i.imgur.com/KYGTz6v.png"
+chi_notif.src = "/static/mahjong_pics_v1/chi_notif.png"
 var gang_notif = document.createElement("img")
-gang_notif.src = "https://i.imgur.com/c6Ee1GG.jpg"
+gang_notif.src = "/static/mahjong_pics_v1/gang_notif.JPG"
 
 var background = document.createElement("img")
 background.src = "https://mcdn.wallpapersafari.com/medium/73/10/VCIq0j.jpg"
