@@ -34,7 +34,6 @@ var countdown = null;
 function greet(){
     player_name = document.querySelector('#name').value
     document.querySelector('#name_block').innerHTML = "Hello, " + player_name + "!"
-    document.getElementById('chat_form').reset()
 }
 //load up table when people first connect to the webpage
 socket.on('table_firstload', function (players_name_dict) {
@@ -95,6 +94,7 @@ socket.on('in_room', function (players_in_room, room_num, players) {
 function chat() {
     var chat_msg = document.querySelector('#chat_text').value
     socket.emit('chat', chat_msg, client_room_num, player_name)
+    document.getElementById('chat_form').reset()
 }
 socket.on('chat_to_client', function (incoming_msg, name) {
     var para = document.createElement("P");                       // Create a <p> node
