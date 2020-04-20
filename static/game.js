@@ -34,6 +34,7 @@ var countdown = null;
 function greet(){
     player_name = document.querySelector('#name').value
     document.querySelector('#name_block').innerHTML = "Hello, " + player_name + "!"
+    document.getElementById('chat_form').reset()
 }
 //load up table when people first connect to the webpage
 socket.on('table_firstload', function (players_name_dict) {
