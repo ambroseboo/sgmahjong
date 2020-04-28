@@ -207,8 +207,7 @@ io.on('connection', function (socket) {
               }
           }
         
-        else 
-            io.to(room_num).emit('discard')
+          io.to(room_num).emit('discard')
         
       })
 
