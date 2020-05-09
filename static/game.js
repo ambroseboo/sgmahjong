@@ -1065,6 +1065,9 @@ function draw_tile(board){
         socket.emit('end_game_to_server', socket.id, board['own'], client_room_num)
     }
 
+    if (board['own'].tiles_in_hand.length >= 14){
+        return
+    }
      //get random tile from all tiles that is not already drawn
      var possible_tile = getRandomInt(0, 148)
     
@@ -1074,7 +1077,6 @@ function draw_tile(board){
     
      board['all'][possible_tile] = 200
      board['own'].tiles_in_hand.push(possible_tile)
-     board['own'].tiles_in_hand.length
     
 
      // chong bu if tile drawn is hua/ own gang
@@ -1095,6 +1097,8 @@ function draw_tile(board){
          board['own'].tiles_in_board.push(board['own'].tiles_in_hand[board['own'].tiles_in_hand.length -1]); //push gang onto board
          
         }
+         
+         board['own'].tiles_in_hand.pop()
 
          var x = getRandomInt(0, 148); //get random int
         
@@ -1102,7 +1106,7 @@ function draw_tile(board){
            var x = getRandomInt(0, 148);
          }
 
-         board['own'].tiles_in_hand[board['own'].tiles_in_hand.length -1] = x; //update hua tile to this tile
+         board['own'].tiles_in_hand.push(x); //update hua tile to this tile
          
          board['all'][x] = 200; //change tile in alltiles to be taken
      }
