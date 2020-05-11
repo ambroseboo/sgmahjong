@@ -44,6 +44,7 @@
             display: none;
         }
     </style>
+    <meta name="propeller" content="9ed141148d06a35d5c865375c4fce4de">
 </head>
 <body style="width:100%; text-align:center;">
     <!--to preload images such that ctx.drawImage can access-->
@@ -134,6 +135,10 @@
                         Scoring
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item">
+                            Currently is all pay, future updates may bring about the option for shooter pay
+                        </a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item">1 台 = 10/20 points</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item">
@@ -204,6 +209,9 @@
         </div>
     </nav>
 
+    <img src="/static/mahjong_pics_v1/your_ad_here.png", alt="Adspace" style="display:block; margin:auto; margin-top:1em; width:48em; height:6em;"/>
+    
+
     <div style="text-align: center; display: none; padding-top: 20px; margin: auto;" id="canvas_block" >
         <canvas id="myCanvas"></canvas>
     </div>
@@ -230,20 +238,20 @@
         </div>
     </div>
     <div id="input_mobile" style="display:none;">
-        <button type="button" onclick="make_discard(0)" style="margin:8px 4px 8px 4px;">1</button>
-        <button type="button" onclick="make_discard(1)" style="margin:8px 4px 8px 4px;">2</button>
-        <button type="button" onclick="make_discard(2)" style="margin:8px 4px 8px 4px;">3</button>
-        <button type="button" onclick="make_discard(3)" style="margin:8px 4px 8px 4px;">4</button>
-        <button type="button" onclick="make_discard(4)" style="margin:8px 4px 8px 4px;">5</button>
-        <button type="button" onclick="make_discard(5)" style="margin:8px 4px 8px 4px;">6</button>
-        <button type="button" onclick="make_discard(6)" style="margin:8px 4px 8px 4px;">7</button>
-        <button type="button" onclick="make_discard(7)" style="margin:8px 4px 8px 4px;">8</button>
-        <button type="button" onclick="make_discard(8)" style="margin:8px 4px 8px 4px;">9</button>
-        <button type="button" onclick="make_discard(9)" style="margin:8px 4px 8px 4px;">0</button>
-        <button type="button" onclick="make_discard(10)" style="margin:8px 4px 8px 4px;">Q</button>
-        <button type="button" onclick="make_discard(11)" style="margin:8px 4px 8px 4px;">W</button>
-        <button type="button" onclick="make_discard(12)" style="margin:8px 4px 8px 4px;">E</button>
-        <button type="button" onclick="make_discard(13)" style="margin:8px 4px 8px 4px;">R</button>
+        <button type="button" onclick="make_discard(0)" style="margin:8px 8px 8px 8px;">1</button>
+        <button type="button" onclick="make_discard(1)" style="margin:8px 8px 8px 8px;">2</button>
+        <button type="button" onclick="make_discard(2)" style="margin:8px 8px 8px 8px;">3</button>
+        <button type="button" onclick="make_discard(3)" style="margin:8px 8px 8px 8px;">4</button>
+        <button type="button" onclick="make_discard(4)" style="margin:8px 8px 8px 8px;">5</button>
+        <button type="button" onclick="make_discard(5)" style="margin:8px 8px 8px 8px;">6</button>
+        <button type="button" onclick="make_discard(6)" style="margin:8px 8px 8px 8px;">7</button>
+        <button type="button" onclick="make_discard(7)" style="margin:8px 8px 8px 8px;">8</button>
+        <button type="button" onclick="make_discard(8)" style="margin:8px 8px 8px 8px;">9</button>
+        <button type="button" onclick="make_discard(9)" style="margin:8px 8px 8px 8px;">0</button>
+        <button type="button" onclick="make_discard(10)" style="margin:8px 8px 8px 8px;">Q</button>
+        <button type="button" onclick="make_discard(11)" style="margin:8px 8px 8px 8px;">W</button>
+        <button type="button" onclick="make_discard(12)" style="margin:8px 8px 8px 8px;">E</button>
+        <button type="button" onclick="make_discard(13)" style="margin:8px 8px 8px 8px;">R</button>
         <br/>
         <button type="button" onclick="make_peng()" style="margin:8px 8px 8px 8px;">P</button>
         <button type="button" onclick="make_chi('left')" style="margin:8px 8px 8px 8px;">Z</button>
@@ -253,7 +261,7 @@
         <button type="button" onclick="hu()" style="margin:8px 8px 8px 8px;">H</button>
     </div>
     <div class="mx-auto alert alert-info" role="alert">
-        <p id="info"> Welcome to our page! Please click the links at the top to learn about how to play, scoring and controls. For best user experience, please use a desktop/tablet.</p>
+        <p id="info"> Welcome to our page! Please click the links at the top of the page to learn about how to play, scoring and controls. Please refrain from refreshing the page while in a room, as you will be kicked out of the room and the current game will be restarted for all 4 people.</p>
         <hr>
         <p class="mb-0" id="tiles_left">This will display the number of tiles left before the end of the round.</p>
     </div>
