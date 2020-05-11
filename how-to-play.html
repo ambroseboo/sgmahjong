@@ -93,7 +93,7 @@
             </ul>
         </div>
     </nav>
-    <img src="/static/mahjong_pics_v1/your_ad_here.png" , alt="Adspace" style="display:block; margin:auto; margin-top:1em; width:42em; height:7em;" />
+    <img src="/static/mahjong_pics_v1/your_ad_here.png" , alt="Adspace" id="banner_ad" style="display:block; margin:auto; margin-top:1em; width:42em; height:7em;" />
     <br />
     <div style="margin-left:4em; margin-right:4em;">
         <strong>How to play Singapore style Mahjong (credits: Singapore Mahjong Wikipedia page)</strong>
@@ -216,5 +216,11 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        if (window.innerWidth < 550) {
+            document.querySelector('#banner_ad').style.width = "24em"
+            document.querySelector('#banner_ad').style.height = "4em"
+        }
+    </script>
 </body>
 </html>
