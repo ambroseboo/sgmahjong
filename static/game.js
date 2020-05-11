@@ -35,7 +35,11 @@ var payout_info = null
 //alert on load of the page
 window.onload = function () {
     alert("Please read and acknowledge before entering the page. As the developers, we have intended for this website to be for entertainment only. By no means should this website be used to facilitate illegal transactions of money or money's worth. By using this website, you agree that you are fully aware of the implications of the Online Gambling Act, CGHA, Betting Act, and any other laws relevant. We will fully comply with higher authorities to provide user information should they deem this site is being abused by specific users for illegal activities, and will comply immediately to shut down this site if higher authorities deem fit.") }
-
+ 
+if (window.innerWidth < 550) {
+    document.querySelector('#banner_ad').style.width = "24em"
+    document.querySelector('#banner_ad').style.height = "4em"
+}
 //on submission of name, display Hello, player_name! also parses in player_name 
 function greet() {
     // for developer login
@@ -133,7 +137,6 @@ socket.on("update_table", function (room, list) {
 
 //on entering a room, enter waiting stage where blank canvas can be seen
 socket.on('in_room', function (players_in_room, room_num, players) {
-    document.querySelector('#meta_block').content = "width=device-width, initial-scale=0.5"
     document.querySelector("#table_block").style.display = "none"
     document.querySelector("#name_block").style.display = "none"
     document.querySelector("#canvas_block").style.display = "inline-block"
