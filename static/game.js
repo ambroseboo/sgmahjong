@@ -133,6 +133,7 @@ socket.on("update_table", function (room, list) {
 
 //on entering a room, enter waiting stage where blank canvas can be seen
 socket.on('in_room', function (players_in_room, room_num, players) {
+    document.querySelector('#meta_block').content = "width=device-width, initial-scale=0.5"
     document.querySelector("#table_block").style.display = "none"
     document.querySelector("#name_block").style.display = "none"
     document.querySelector("#canvas_block").style.display = "inline-block"
