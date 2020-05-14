@@ -34,7 +34,7 @@ var payout_info = null
 
 //alert on load of the page
 window.onload = function () {
-    alert("Please refer to our Terms and Conditions, located in the link at the top of the page. By clicking OK, you have accepted our terms and conditions, including but not limited to: 1) General policy, 2) Privacy Policy, 3) Disclaimer of Warranties and Liability, 4) Right of Access and 5) Links from this website to other websites.")
+    alert("Please refer to our Terms and Conditions, located in the link at the top of the page. By clicking OK, you have accepted our terms and conditions, including but not limited to: 6. As the developers, we have intended for this website to be for entertainment only. By no means should this website be used to facilitate illegal transactions of money or money’s worth. By using this website, you agree that you are fully aware of the implications of the Online Gambling Act, CGHA, Betting Act, and any other laws relevant. We will fully comply with higher authorities to provide user information should they deem this site is being abused by specific users for illegal activities, and will comply immediately to shut down this site if higher authorities deem fit.")
 }
  
 if (window.innerWidth < 550) {
