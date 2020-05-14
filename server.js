@@ -16,9 +16,9 @@ app.get('/how-to-play', function (req, res) {
     res.sendFile(__dirname + '/how-to-play.html');
 });
 
-//app.get('/how-to-play', function (req, res) {
-//    res.sendFile(__dirname + '/how-to-play.html');
-//});
+app.get('/terms', function (req, res) {
+    res.sendFile(__dirname + '/terms.html');
+});
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
