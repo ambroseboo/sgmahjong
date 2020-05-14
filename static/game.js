@@ -34,7 +34,8 @@ var payout_info = null
 
 //alert on load of the page
 window.onload = function () {
-    alert("Please read and acknowledge before entering the page. As the developers, we have intended for this website to be for entertainment only. By no means should this website be used to facilitate illegal transactions of money or money's worth. By using this website, you agree that you are fully aware of the implications of the Online Gambling Act, CGHA, Betting Act, and any other laws relevant. We will fully comply with higher authorities to provide user information should they deem this site is being abused by specific users for illegal activities, and will comply immediately to shut down this site if higher authorities deem fit.") }
+    alert("Please refer to our Terms and Conditions, located in the link at the top of the page. By clicking OK, you have accepted our terms and conditions, including but not limited to: 1) General policy, 2) Privacy Policy, 3) Disclaimer of Warranties and Liability, 4) Right of Access and 5) Links from this website to other websites.")
+}
  
 if (window.innerWidth < 550) {
     document.querySelector('#banner_ad').style.width = "24em"
@@ -143,7 +144,7 @@ socket.on('in_room', function (players_in_room, room_num, players) {
     if (document.documentElement.clientWidth >= 1100) {
         document.querySelector("#box").style.display = "inline-block"
     }
-    document.querySelector('#info').innerHTML = "Waiting for more players to connect..."
+    document.querySelector('#info').innerHTML = "No. of players in room: " + (players_in_room.length).toString() + ", waiting for more players to connect..." 
     document.querySelector('#input_mobile').style.display = "block"
 
     client_room_num = room_num
