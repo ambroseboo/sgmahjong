@@ -61,7 +61,7 @@ function dev_login() {
 socket.on('password_correct', function () {
     player_name = "DEV TEAM"
     document.querySelector('#password_block').innerHTML = "Dev team login"
-    for (var i = 1; i <= 15; i++) {
+    for (var i = 1; i <= 25; i++) {
         document.getElementById(i + '_button').disabled = false
     }
     document.querySelector("#dev_form").style.display = "block"
@@ -98,7 +98,7 @@ socket.on('table_firstload', function (players_name_dict, shooter_option) {
 function join(room_num, speed) {
     var checked = document.getElementById(room_num + '_checkbox').checked //returns true/false
     socket.emit('join_room', room_num, player_name, checked)
-    for (var i = 1; i <= 15; i++) {
+    for (var i = 1; i <= 25; i++) {
         document.getElementById(i + '_button').disabled = true
     }
     if (speed == 'fast') {
