@@ -1072,8 +1072,12 @@ function draw_tile(board){
     if (new Set(board['all']).size <= 16){
         socket.emit('end_game_to_server', socket.id, board['own'], client_room_num)
     }
-
+    
     if (board['own'].tiles_in_hand.length >= 14){
+        return
+    }
+    
+    if (board['own'].tiles_in_hand.length == 2 || board['own'].tiles_in_hand.length == 3 || board['own'].tiles_in_hand.length == 5 || board['own'].tiles_in_hand.length == 6 || board['own'].tiles_in_hand.length == 8 || board['own'].tiles_in_hand.length == 9 || board['own'].tiles_in_hand.length == 11 || board['own'].tiles_in_hand.length == 12){
         return
     }
      //get random tile from all tiles that is not already drawn
