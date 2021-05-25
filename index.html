@@ -1,16 +1,20 @@
 ﻿<html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" id="meta_block">
+    <!-- Bidvertiser2029589 -->
+    <script type="text/javascript">var infolinks_pid = 3257333; var infolinks_wsid = 0;</script>
+    <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163888451-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163888451-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'UA-163888451-2');
-</script>
-<script data-ad-client="ca-pub-2370338679261348" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>    
-    <title>SG Mahjong beta</title>
+        gtag('config', 'UA-163888451-2');
+    </script>
+    <script data-ad-client="ca-pub-2370338679261348" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <title>SG Mahjong online (multiplayer)</title>
     <link rel="shortcut icon" href="https://i.imgur.com/prE6IdG.jpg" />
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -21,11 +25,12 @@
         }
 
         .alert {
-            width: 50%;
+            width: 80%;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px;
             align-items: center;
         }
+
         #box {
             width: 16em;
             height: 600px;
@@ -36,10 +41,10 @@
             overflow: auto;
             direction: ltr;
             text-align: left;
-            display:none;
+            display: none;
         }
-
     </style>
+    <meta name="propeller" content="9ed141148d06a35d5c865375c4fce4de">
 </head>
 <body style="width:100%; text-align:center;">
     <!--to preload images such that ctx.drawImage can access-->
@@ -115,7 +120,7 @@
         </script>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">SG Mahjong v1.04 (beta)</a>
+        <a class="navbar-brand" href="/">SG Mahjong online</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -143,8 +148,8 @@
                             一色 - 4 台<br />
                             臭平胡 - 1 台<br />
                             平胡 - 4 台<br />
-                            混老头 - 2 台<br />
-                            清老头 - 4 台<br />
+                            混老头 - 4 台<br />
+                            清老头 - 5 台<br />
                             十三幺 - 5 台<br />
                         </a>
                         <div class="dropdown-divider"></div>
@@ -183,27 +188,30 @@
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item">P - 碰 (if valid)<br /></a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item">G - 槓 (if valid)<br /></a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item">
                             Z - 吃. Take Discard Tile, use as left (6 discarded, forms 678)<br />
                             X - 吃. Take Discard Tile, use as middle (7 discarded, forms 678)<br />
-                            C - 吃. Take Discard Tile, use as right (8 discarded, forms 678)<br /><br />
+                            C - 吃. Take Discard Tile, use as right (8 discarded, forms 678)<br />
                         </a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item"> H - 胡 (if valid)<br /></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item">Note: The dealer is identified by the person holding the red dice</a>
+                        <a class="dropdown-item">Note: The dealer is identified by the person holding the red dice. </a>
+                        <a class="dropdown-item">Note: If a user leaves the room, the game will stop and be restarted, <br/> even if the same user joins the room again.</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="how-to-play">How to play</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="terms">Terms & Conditions</a>
+                </li>
             </ul>
         </div>
     </nav>
 
+    <img src="/static/mahjong_pics_v1/your_ad_here.png", alt="Adspace" id="banner_ad" style="display:block; margin:auto; margin-top:1em; width:42em; height:7em;"/>
+    
     <div style="text-align: center; display: none; padding-top: 20px; margin: auto;" id="canvas_block" >
         <canvas id="myCanvas"></canvas>
     </div>
@@ -229,9 +237,31 @@
             <button type="button" onclick="chat('hahaha')">hahaha</button>
         </div>
     </div>
-
+    <div id="input_mobile" style="display:none;">
+        <button type="button" onclick="make_discard(0)" style="margin:8px 8px 8px 8px;">1</button>
+        <button type="button" onclick="make_discard(1)" style="margin:8px 8px 8px 8px;">2</button>
+        <button type="button" onclick="make_discard(2)" style="margin:8px 8px 8px 8px;">3</button>
+        <button type="button" onclick="make_discard(3)" style="margin:8px 8px 8px 8px;">4</button>
+        <button type="button" onclick="make_discard(4)" style="margin:8px 8px 8px 8px;">5</button>
+        <button type="button" onclick="make_discard(5)" style="margin:8px 8px 8px 8px;">6</button>
+        <button type="button" onclick="make_discard(6)" style="margin:8px 8px 8px 8px;">7</button>
+        <button type="button" onclick="make_discard(7)" style="margin:8px 8px 8px 8px;">8</button>
+        <button type="button" onclick="make_discard(8)" style="margin:8px 8px 8px 8px;">9</button>
+        <button type="button" onclick="make_discard(9)" style="margin:8px 8px 8px 8px;">0</button>
+        <button type="button" onclick="make_discard(10)" style="margin:8px 8px 8px 8px;">Q</button>
+        <button type="button" onclick="make_discard(11)" style="margin:8px 8px 8px 8px;">W</button>
+        <button type="button" onclick="make_discard(12)" style="margin:8px 8px 8px 8px;">E</button>
+        <button type="button" onclick="make_discard(13)" style="margin:8px 8px 8px 8px;">R</button>
+        <br/>
+        <button type="button" onclick="make_peng()" style="margin:8px 8px 8px 8px;">P</button>
+        <button type="button" onclick="make_chi('left')" style="margin:8px 8px 8px 8px;">Z</button>
+        <button type="button" onclick="make_chi('center')" style="margin:8px 8px 8px 8px;">X</button>
+        <button type="button" onclick="make_chi('right')" style="margin:8px 8px 8px 8px;">C</button>
+        <button type="button" onclick="make_gang()" style="margin:8px 8px 8px 8px;">G</button>
+        <button type="button" onclick="hu()" style="margin:8px 8px 8px 8px;">H</button>
+    </div>
     <div class="mx-auto alert alert-info" role="alert">
-        <p id="info"> Welcome to our page! Please click the links at the top of the page to learn about how to play, scoring and controls. Please refrain from refreshing the page while in a room, as you will be kicked out of the room and the current game will be restarted for all 4 people.</p>
+        <p id="info"> This is a page to play multiplayer Singapore Mahjong online! Please click the links at the top of the page to learn about how to play, scoring and controls.</p>
         <hr>
         <p class="mb-0" id="tiles_left">This will display the number of tiles left before the end of the round.</p>
     </div>
@@ -443,6 +473,126 @@
                         </td>
                         <td><button id="15_button" onclick="join('15', 'slow')">Join</button></td>
                     </tr>
+                    <tr>
+                        <th scope="row">16</th>
+                        <td>Super fast</td>
+                        <td id="16_num">0</td>
+                        <td id="16_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="16_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="16_button" onclick="join('16', 'super-fast')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">17</th>
+                        <td>Super fast</td>
+                        <td id="17_num">0</td>
+                        <td id="17_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="17_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="17_button" onclick="join('17', 'super-fast')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">18</th>
+                        <td>Fast</td>
+                        <td id="18_num">0</td>
+                        <td id="18_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="18_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="18_button" onclick="join('18', 'fast')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">19</th>
+                        <td>Fast</td>
+                        <td id="19_num">0</td>
+                        <td id="19_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="19_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="19_button" onclick="join('19', 'fast')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">20</th>
+                        <td>Fast</td>
+                        <td id="20_num">0</td>
+                        <td id="20_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="20_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="20_button" onclick="join('20', 'fast')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">21</th>
+                        <td>Slow</td>
+                        <td id="21_num">0</td>
+                        <td id="21_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="21_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="21_button" onclick="join('21', 'slow')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">22</th>
+                        <td>Slow</td>
+                        <td id="22_num">0</td>
+                        <td id="22_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="22_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="22_button" onclick="join('22', 'slow')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">23</th>
+                        <td>Slow</td>
+                        <td id="23_num">0</td>
+                        <td id="23_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="23_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="23_button" onclick="join('23', 'slow')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">24</th>
+                        <td>Slow</td>
+                        <td id="24_num">0</td>
+                        <td id="24_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="24_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="24_button" onclick="join('24', 'slow')">Join</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">25</th>
+                        <td>Slow</td>
+                        <td id="25_num">0</td>
+                        <td id="25_names">-</td>
+                        <td id="shooter_option">
+                            <form>
+                                <input type="checkbox" id="25_checkbox">
+                            </form>
+                        </td>
+                        <td><button id="25_button" onclick="join('25', 'slow')">Join</button></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -455,5 +605,16 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+    var vglnk = {key: '6baca3d4de7ea1a8078920276751ed3e'};
+    (function(d, t) {
+        var s = d.createElement(t);
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = '//cdn.viglink.com/api/vglnk.js';
+        var r = d.getElementsByTagName(t)[0];
+            r.parentNode.insertBefore(s, r);
+    }(document, 'script'));
+</script>
 </body>
 </html>

@@ -34,8 +34,13 @@ var payout_info = null
 
 //alert on load of the page
 window.onload = function () {
-    alert("Please read and acknowledge before entering the page. As the developers, we have intended for this website to be for entertainment only. By no means should this website be used to facilitate illegal transactions of money or money's worth. By using this website, you agree that you are fully aware of the implications of the Online Gambling Act, CGHA, Betting Act, and any other laws relevant. We will fully comply with higher authorities to provide user information should they deem this site is being abused by specific users for illegal activities, and will comply immediately to shut down this site if higher authorities deem fit.") }
-
+    alert("Please refer to our Terms and Conditions, located in the link at the top of the page. By clicking OK, you have accepted our terms and conditions, including but not limited to: 6. As the developers, we have intended for this website to be for entertainment only. By no means should this website be used to facilitate illegal transactions of money or money’s worth. By using this website, you agree that you are fully aware of the implications of the Online Gambling Act, CGHA, Betting Act, and any other laws relevant. We will fully comply with higher authorities to provide user information should they deem this site is being abused by specific users for illegal activities, and will comply immediately to shut down this site if higher authorities deem fit.")
+}
+ 
+if (window.innerWidth < 550) {
+    document.querySelector('#banner_ad').style.width = "24em"
+    document.querySelector('#banner_ad').style.height = "4em"
+}
 //on submission of name, display Hello, player_name! also parses in player_name 
 function greet() {
     // for developer login
@@ -56,7 +61,7 @@ function dev_login() {
 socket.on('password_correct', function () {
     player_name = "DEV TEAM"
     document.querySelector('#password_block').innerHTML = "Dev team login"
-    for (var i = 1; i <= 15; i++) {
+    for (var i = 1; i <= 25; i++) {
         document.getElementById(i + '_button').disabled = false
     }
     document.querySelector("#dev_form").style.display = "block"
@@ -93,16 +98,20 @@ socket.on('table_firstload', function (players_name_dict, shooter_option) {
 function join(room_num, speed) {
     var checked = document.getElementById(room_num + '_checkbox').checked //returns true/false
     socket.emit('join_room', room_num, player_name, checked)
-    for (var i = 1; i <= 15; i++) {
+    for (var i = 1; i <= 25; i++) {
         document.getElementById(i + '_button').disabled = true
     }
     if (speed == 'fast') {
         time_to_peng = 3000
         time_to_chi = 2000
     }
-    else {
+    else if (speed == 'slow') {
         time_to_peng = 6000
         time_to_chi = 5000
+    }
+    else {
+        time_to_peng = 2000
+        time_to_chi = 1000
     }
     if (checked == true) {
         payment_type = "shooter"
@@ -136,8 +145,11 @@ socket.on('in_room', function (players_in_room, room_num, players) {
     document.querySelector("#table_block").style.display = "none"
     document.querySelector("#name_block").style.display = "none"
     document.querySelector("#canvas_block").style.display = "inline-block"
-    document.querySelector("#box").style.display = "inline-block"
-    document.querySelector('#info').innerHTML = "Waiting for more players to connect..."
+    if (document.documentElement.clientWidth >= 1100) {
+        document.querySelector("#box").style.display = "inline-block"
+    }
+    document.querySelector('#info').innerHTML = "No. of players in room: " + (players_in_room.length).toString() + ", waiting for more players to connect..." 
+    document.querySelector('#input_mobile').style.display = "block"
 
     client_room_num = room_num
     //start game for room if room has 4 people
@@ -1065,6 +1077,9 @@ function draw_tile(board){
         socket.emit('end_game_to_server', socket.id, board['own'], client_room_num)
     }
 
+    if (board['own'].tiles_in_hand.length >= 14){
+        return
+    }
      //get random tile from all tiles that is not already drawn
      var possible_tile = getRandomInt(0, 148)
     
@@ -1074,7 +1089,6 @@ function draw_tile(board){
     
      board['all'][possible_tile] = 200
      board['own'].tiles_in_hand.push(possible_tile)
-     board['own'].tiles_in_hand.length
     
 
      // chong bu if tile drawn is hua/ own gang
@@ -1095,6 +1109,8 @@ function draw_tile(board){
          board['own'].tiles_in_board.push(board['own'].tiles_in_hand[board['own'].tiles_in_hand.length -1]); //push gang onto board
          
         }
+         
+         board['own'].tiles_in_hand.pop()
 
          var x = getRandomInt(0, 148); //get random int
         
@@ -1102,7 +1118,7 @@ function draw_tile(board){
            var x = getRandomInt(0, 148);
          }
 
-         board['own'].tiles_in_hand[board['own'].tiles_in_hand.length -1] = x; //update hua tile to this tile
+         board['own'].tiles_in_hand.push(x); //update hua tile to this tile
          
          board['all'][x] = 200; //change tile in alltiles to be taken
      }
