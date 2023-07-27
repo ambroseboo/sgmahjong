@@ -91,39 +91,56 @@ function check_special_chi(li){
 
 function check_hua(hua_array, player_wind){
     var counter = 0
+    var text = ' '
     if (hua_array.includes(144) && hua_array.includes(145) && hua_array.includes(146) && hua_array.includes(147)){
-        return 5
+        return '5 animal animal animal animal'
     }
     
     else{ 
         for (let i = 0; i < hua_array.length; i++){
             if (hua_array[i] >= 144 && hua_array[i] <= 147){
                 counter ++
+                text += ' animal '
             }
 
-            if (hua_array[i] == player_wind + 136  || hua_array[i] == player_wind + 137){ 
+            if (hua_array[i] == player_wind * 2 + 136  || hua_array[i] == player_wind * 2 + 137){ 
                 counter ++
+                text += ' player_own_hua '
             }
         }
     }
-    return counter
+    return counter.toString() + text.slice(0, -1)
 }
 
 function check_dragon_wind(li, player_wind, prevailing_wind){
     var counter = 0
+    var text = ' '
     for (let i = 0; i < li.length - 1; i++){
         var check = magic(li[i][0])
-        if (check == 27 || check == 28 || check == 29){
+        if (check == 27){
             counter ++
+            text += ' red_dragon '
         }
+        if (check == 28){
+            counter ++
+            text += ' white_dragon '
+        }
+
+        if (check == 29){
+            counter ++
+            text += ' green_dragon '
+        }
+        
         if (check == player_wind + 30){
             counter++
+            text += ' player_wind '
         }
         if (check == prevailing_wind + 30){
             counter ++ 
+            text += ' prevailing_wind '
         }
     }
-    return counter
+    return counter.toString() + text.slice(0, -1)
 }
 
 // Check13yao
@@ -243,29 +260,41 @@ check_win: function(original) {
 calculate_tai: function(li, last, player_wind , prevailing_wind , hua_array, self){
     
     var counter = 0
-    
+    var text = ' '
+    var temp
+    var temp_2
     // Check hua/dragon/feng
-    counter = check_hua(hua_array, player_wind) + check_dragon_wind(li, player_wind, prevailing_wind)
-    console.log(counter)
+    temp = check_hua(hua_array, player_wind)
+    counter = parseInt(temp.slice(0, 1))
+    text = ' ' + temp.slice(1) + ' '
+    
+    temp_2 = check_dragon_wind(li, player_wind, prevailing_wind)
+    counter += parseInt(temp_2.slice(0, 1))
+    text += ' ' + temp_2.slice(1) + ' '
 
     if (counter >= 5){
-        return 5
+        return counter.toString() + text 
     }
 
     if (chou_ping_hu(li, last, player_wind, prevailing_wind, self)){
         counter += 1
+        text += ' chou_ping_hu '
         if (ping_hu(hua_array)){
             counter += 3
+            text += ' ping_hu '
         }
     }
     
    
     else if (dui_dui(li)){
         counter += 2
+        text += ' dui_dui '
         if (one_nine_half(li)){
             counter += 2
+            text += ' one_nine_half '
             if (one_nine(li)){
                 counter += 1
+                text += ' one_nine '
             }
         }
     }
@@ -274,21 +303,23 @@ calculate_tai: function(li, last, player_wind , prevailing_wind , hua_array, sel
 
     if(ban_se(li)){
         counter += 2
-
+        text += ' ban_se '
         if (yi_se(li)){
             counter += 2
+            text += ' yi_se '
         }
     }
 
     if (thirteen_wonder(li)){
         counter += 5
+        text += ' thirteen_wonder '
     }
 
     if (counter >= 5){
-        return 5
+        return '5 ' + text
     }
 
-    return counter
+    return counter.toString() + text
 },
 
 is_valid_gang: function(li) {
@@ -466,5 +497,5 @@ function one_nine(li){
 }
 
 // test
-// console.log(module.exports.calculate_tai([[0, 1, 2],[8, 12,16],[32, 33, 34],[24, 25, 26],[14, 15]], 0, 0, 3, [140], false))
+console.log(module.exports.calculate_tai([[0, 1, 2],[8, 12,16],[32, 33, 34],[72, 76, 80],[14, 15]], 2, 2, 2, [], false))
 
