@@ -12,9 +12,15 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
-//app.get('/how-to-play', function (req, res) {
-//    res.sendFile(__dirname + '/how-to-play.html');
-//});
+app.get('/how-to-play', function (req, res) {
+   res.sendFile(__dirname + '/how-to-play.html');
+});
+
+app.get('/terms', function (req, res) {
+  res.sendFile(__dirname + '/terms.html');
+});
+
+app.use('/mahjong_pics_v1',express.static(__dirname + '/mahjong_pics_v1'));
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
